@@ -6,6 +6,7 @@ For inputArray = [3, 6, -2, -5, 7, 3], the output should be
 solution(inputArray) = 21.
 
 7 and 3 produce the largest product.*/
+
 int solution(vector<int> inputArray) {
 int n = inputArray.size();
   int a = inputArray[0], b = inputArray[1];
