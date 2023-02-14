@@ -15,35 +15,17 @@ solution(sequence) = true.
 You can remove 3 from the array to get the strictly increasing sequence [1, 2]. Alternately, you can remove 2 to get the strictly increasing sequence [1, 3].*/
 
 bool solution(vector<int> sequence) {
-int n = sequence.size();
-int modify = 0;
- 
-    // Check whether the first element needs
-    // to be modify or not
-    if (sequence[0] > sequence[1]) {
-        modify++;
-    }
- 
-    // Loop from 2nd element to the 2nd last element
-    for (int i = 1; i < n - 2; i++) {
- 
-        // Check whether arr[i] needs to be modified
-        if ((sequence[i - 1] < sequence[i] && sequence[i + 1] < sequence[i] && (i !=1 || modify == 0))
-            || (sequence[i - 1] > sequence[i] && sequence[i + 1] > sequence[i] && i !=1)) {
-            modify++;
-        }
-    }
- 
-    // Check whether the last element needs
-    // to be modify or not
-    if (sequence[n - 1] < sequence[n - 2]  )
-        modify++;
-    if (n==4 && sequence[n-1]== sequence[1])
-    modify++;
- 
-    // If more than 1 modification is required
-    if (modify > 1 || modify == 0 && n>2 )
-        return false;
- 
-    return true ;
+int n = sequence.size(); 
+int count=0;
+int i=0;
+for (i=1;i<n;i++)  
+{
+    if (sequence[i]<=sequence[i-1])
+    count++;
+    if (count>1) return false;
+    //cout<<count<<i<<endl;
+    //cout<<sequence[5]<<endl;
+    if(i!=1&&i!=n-1&&sequence[i]<=sequence[i-2]&&sequence[i+1]<=sequence[i-1]) return false;
+}  
+return true;
 }
